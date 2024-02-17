@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     #terceras
     'rest_framework',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -53,12 +54,20 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    "https://localhost:3000",
+    "http://localhost:8000",
+)
+
+CSRF_TRUSTED_ORIGIN = ["https://localhost:3000"]
 
 ROOT_URLCONF = 'django_project.urls'
 
